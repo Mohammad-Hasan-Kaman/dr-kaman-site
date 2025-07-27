@@ -1,0 +1,22 @@
+# Database
+db.sqlite3
+*.sqlite3
+
+# Django generated files
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Media files (user uploaded content)
+/media/
+
+# Static files (collected)
+/static/
+
+# IDE files
+.idea/
+.vscode/

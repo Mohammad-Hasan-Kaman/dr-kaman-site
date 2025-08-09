@@ -1,23 +1,80 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}وب‌سایت دکتر کمن{% endblock %}</title>
+    <title>{% block title %}وب‌سایت دکتر محمد رضا کمن{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
+    <!-- فونت B Mitra -->
     <style>
+        @font-face {
+            font-family: 'B Mitra';
+            src: url("{% static 'fonts/BMitra-Regular.ttf' %}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'B Mitra';
+            src: url("{% static 'fonts/BMitra-Bold.ttf' %}") format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'B Mitra', Tahoma, sans-serif !important;
+        }
+
         body {
-            font-family: 'Tahoma', sans-serif;
+            text-align: right !important;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #f8f9fa;
+            background-color: #f4f7f9;
+            background-image: repeating-linear-gradient(45deg, #cbf0ce 25%, transparent 25%, transparent 75%, #cbf0ce 75%, #cbf0ce),
+                              repeating-linear-gradient(-45deg, #cbf0ce 25%, transparent 25%, transparent 75%, #cbf0ce 75%, #cbf0ce);
+            background-size: 60px 60px;
         }
+
         main {
             flex-grow: 1;
         }
+
+        .page-main-content {
+            max-width: 1400px;
+            width: 95%;
+            margin: 30px auto;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            background-color: #075718;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .nav-link.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #075718;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
         .card {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
@@ -28,13 +85,16 @@
     </style>
 </head>
 <body>
+    <!-- نوبار -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'core:home' %}">دکتر کمن</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand fw-bold" href="{% url 'core:home' %}">دکتر محمد رضا کمن</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'core:home' %}">خانه</a></li>
                         <li class="nav-item"><a class="nav-link {% if '/texts/' in request.path %}active{% endif %}" href="/texts/">آثار متنی</a></li>
                         <li class="nav-item"><a class="nav-link {% if '/audios/' in request.path %}active{% endif %}" href="/audios/">آثار صوتی</a></li>
@@ -42,13 +102,28 @@
                         <li class="nav-item"><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'core:about' %}">درباره</a></li>
                         <li class="nav-item"><a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'core:contact' %}">تماس</a></li>
                     </ul>
-                    <form class="d-flex" action="/search/" method="get"><input class="form-control me-2" type="search" name="q" placeholder="جستجو..."><button class="btn btn-outline-light" type="submit">جستجو</button></form>
+                    <form class="d-flex ms-auto" action="/search/" method="get">
+                        <input class="form-control me-2" type="search" name="q" placeholder="جستجو...">
+                        <button class="btn btn-outline-light" type="submit">جستجو</button>
+                    </form>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="py-4">{% block content %}{% endblock %}</main>
-    <footer class="footer mt-auto py-3 bg-dark text-white text-center"><p class="mb-0">© تمامی حقوق برای دکتر کمن محفوظ است.</p></footer>
+
+    <!-- محتوای اصلی -->
+    <main>
+        <div class="page-main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="mt-auto">
+        <p class="mb-0">© تمامی حقوق برای دکتر محمد رضا کمن محفوظ است.</p>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

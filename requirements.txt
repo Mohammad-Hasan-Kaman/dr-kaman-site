@@ -1,0 +1,8 @@
+# Core Framework
+Django>=4.2.0
+
+# Image Handling (for Sliders and Media)
+Pillow>=10.0.0
+
+# Environment Variables (Optional but recommended)
+python-dotenv>=1.0.0

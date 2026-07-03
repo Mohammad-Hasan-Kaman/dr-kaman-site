@@ -3,13 +3,13 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}وب‌سایت دکتر محمد رضا کمن{% endblock %}</title>
+    <title>{% block title %}خانه-وب‌سایت دکتر محمد رضا کمن{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon_kaman.ico' %}" type="image/x-icon">
 
     <!-- فونت B Mitra -->
     <style>
@@ -30,17 +30,15 @@
             font-family: 'B Mitra', Tahoma, sans-serif !important;
         }
 
-        body {
-            text-align: right !important;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #f4f7f9;
-            background-image: repeating-linear-gradient(45deg, #cbf0ce 25%, transparent 25%, transparent 75%, #cbf0ce 75%, #cbf0ce),
-                              repeating-linear-gradient(-45deg, #cbf0ce 25%, transparent 25%, transparent 75%, #cbf0ce 75%, #cbf0ce);
-            background-size: 60px 60px;
-        }
-
+                body {
+                    text-align: right !important;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                    /* گرادیان سبز تیزتر و جذاب‌تر */
+                    background: #dfede8;
+                    background: linear-gradient(0deg, rgba(223, 237, 232, 1) 27%, rgba(87, 199, 133, 1) 84%, rgba(87, 199, 133, 1) 65%, rgba(87, 199, 133, 1) 76%, rgba(87, 199, 133, 1) 100%);
+                }
         main {
             flex-grow: 1;
         }
@@ -82,6 +80,13 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+        }
     </style>
 </head>
 <body>
@@ -96,11 +101,13 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'core:home' %}">خانه</a></li>
-                        <li class="nav-item"><a class="nav-link {% if '/texts/' in request.path %}active{% endif %}" href="/texts/">آثار متنی</a></li>
-                        <li class="nav-item"><a class="nav-link {% if '/audios/' in request.path %}active{% endif %}" href="/audios/">آثار صوتی</a></li>
                         <li class="nav-item"><a class="nav-link {% if '/videos/' in request.path %}active{% endif %}" href="/videos/">آثار تصویری</a></li>
+                        <li class="nav-item"><a class="nav-link {% if '/audios/' in request.path %}active{% endif %}" href="/audios/">آثار صوتی</a></li>
+                        <li class="nav-item"><a class="nav-link {% if '/books/' in request.path %}active{% endif %}" href="/books/">کتاب‌ها</a></li>
+                        <li class="nav-item"><a class="nav-link {% if '/texts/' in request.path %}active{% endif %}" href="/texts/">آثار متنی</a></li>
                         <li class="nav-item"><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'core:about' %}">درباره</a></li>
                         <li class="nav-item"><a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'core:contact' %}">تماس</a></li>
+
                     </ul>
                     <form class="d-flex ms-auto" action="/search/" method="get">
                         <input class="form-control me-2" type="search" name="q" placeholder="جستجو...">

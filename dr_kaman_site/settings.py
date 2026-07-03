@@ -1,9 +1,16 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-your-secret-key-that-is-auto-generated'
-DEBUG = True
-ALLOWED_HOSTS = []
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,6 +25,7 @@ INSTALLED_APPS = [
     'audios',
     'texts',
     'search',
+    'books',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +43,6 @@ ROOT_URLCONF = 'dr_kaman_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # به جنگو صراحتاً می‌گوییم که پوشه اصلی تمپلیت‌ها در ریشه پروژه قرار دارد
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -49,16 +56,22 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'dr_kaman_site.wsgi.application'
+
 DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3' } }
+
 LANGUAGE_CODE = 'fa-ir'
 TIME_ZONE = 'Asia/Tehran'
 USE_I18N = True
 USE_TZ = True
+
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]

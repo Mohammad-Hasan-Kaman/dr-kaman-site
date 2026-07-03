@@ -1,42 +1,33 @@
 {% extends "core/base.html" %}
-{% block title %}تماس با ما - وب‌سایت دکتر محمدرضا کمن{% endblock %}
+{% block title %}{{ contact_page.title }}{% endblock %}
 {% block content %}
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="text-center mb-5">
-                <h1 class="display-4 fw-bold">تماس با ما</h1>
-                <p class="lead text-muted">راه‌های ارتباطی با دکتر محمدرضا کمن و مراکز وابسته</p>
+                <h1 class="display-4 fw-bold">{{ contact_page.title }}</h1>
+                <p class="lead text-muted">راه‌های ارتباطی با دکتر محمد رضا کمن</p>
             </div>
 
-            <div class="card border-0 shadow-sm p-4 fs-5">
+            <div class="card border-0 shadow-lg p-5 rounded-4">
+                <div class="card-body">
+                    {{ contact_page.content|linebreaks }}
 
-                <h4 class="fw-bold mb-3">📌 دکتر محمدرضا کمن در فضای مجازی</h4>
-                <ul class="list-unstyled mb-4">
-                    <li>📲 تلگرام: <a href="https://t.me/M_R_Kaman" target="_blank">t.me/M_R_Kaman</a></li>
-                    <li>📸 اینستاگرام: <a href="https://www.instagram.com/mohammadreza.kaman/" target="_blank">@mohammadreza.kaman</a></li>
-                </ul>
+                    {% if contact_page.phone or contact_page.email or contact_page.address %}
+                    <div class="mt-5">
+                        <h4 class="fw-bold mb-3">اطلاعات تماس</h4>
+                        <ul class="list-unstyled">
+                            {% if contact_page.phone %}<li class="mb-2"><i class="bi bi-telephone me-2"></i> {{ contact_page.phone }}</li>{% endif %}
+                            {% if contact_page.email %}<li class="mb-2"><i class="bi bi-envelope me-2"></i> <a href="mailto:{{ contact_page.email }}">{{ contact_page.email }}</a></li>{% endif %}
+                            {% if contact_page.address %}<li class="mb-2"><i class="bi bi-geo-alt me-2"></i> {{ contact_page.address|linebreaksbr }}</li>{% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
 
-                <h4 class="fw-bold mb-3">📌 مرکز روانشناسی و مشاوره خانواده نیک روان با مدیریت دکتر محمدرضا کمن</h4>
-                <ul class="list-unstyled mb-4">
-                    <li>☎️ 021-26403803</li>
-                    <li>☎️ 021-26403804</li>
-                    <li>🚕 آدرس: تهران، خیابان شریعتی، دوراهی قلهک، روبروی بیمارستان ایرانمهر، کوچه مسعود، کوچه مطهری، بن‌بست صفایی، پلاک 7، همکف</li>
-                    <li>🌐 وب‌سایت: <a href="https://nikravan.org" target="_blank">nikravan.org</a></li>
-                </ul>
-
-                <h5 class="fw-bold mb-3">شبکه‌های اجتماعی مرکز نیک روان</h5>
-                <ul class="list-unstyled mb-4">
-                    <li>📲 کانال ایتا: <a href="https://eitaa.com/khanevadenik" target="_blank">eitaa.com/khanevadenik</a></li>
-                    <li>📲 کانال تلگرام: <a href="https://t.me/khanevadenik" target="_blank">t.me/khanevadenik</a></li>
-                    <li>📸 اینستاگرام: <a href="https://instagram.com/nikravan_clinic" target="_blank">@nikravan_clinic</a></li>
-                </ul>
-
-                <h4 class="fw-bold mb-3">📌 نیک سنج (آزمون‌های تخصصی روانشناختی)</h4>
-                <p>🌐 وب‌سایت: <a href="https://niksanj.com" target="_blank">niksanj.com</a></p>
-                <p class="text-muted">در صورت بروز مشکل فنی در سایت، لطفاً به آدرس زیر ایمیل بزنید:</p>
-                <p>📧 <a href="mailto:mohammadhasankaman@gmail.com">mohammadhasankaman@gmail.com</a></p>
-
+            <div class="text-center mt-4 text-muted small">
+                آخرین بروزرسانی: {{ contact_page.updated_at|date:"Y/m/d H:i" }}
             </div>
         </div>
     </div>

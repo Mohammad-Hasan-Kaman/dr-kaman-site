@@ -4,28 +4,30 @@
 
 {% block content %}
 
-
-
+    <!-- اسلایدر -->
     {% if slider_images %}
     <div class="mb-5">
-        <div id="heroCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel" style="height: 550px;">
+        <div id="heroCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden"
+             data-bs-ride="carousel" style="max-height: 550px;">
             <div class="carousel-indicators">
                 {% for slide in slider_images %}
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
-                            class="{% if forloop.first %}active{% endif %}" aria-current="true"></button>
+                    <button type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.first %}active{% endif %}"
+                            aria-current="true"></button>
                 {% endfor %}
             </div>
 
-            <div class="carousel-inner h-100">
+            <div class="carousel-inner">
                 {% for slide in slider_images %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %} h-100 position-relative">
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <img src="{{ slide.image.url }}"
-                         class="d-block w-100 h-100"
-                         style="object-fit: cover;"
+                         class="d-block w-100"
+                         style="height: 60vh; object-fit: cover;"
                          alt="{{ slide.title }}">
 
-                    <div class="carousel-caption d-md-block bg-dark bg-opacity-50 rounded-3 p-3"
-                         style="position: absolute; bottom: 60px; left: 0; right: 0; margin: 0 auto;">
+                    <div class="carousel-caption bg-dark bg-opacity-50 rounded-3 p-3 d-none d-md-block"
+                         style="position: absolute; bottom: 40px; left: 0; right: 0; margin: auto; max-width: 80%;">
                         <h2 class="fw-bold text-white mb-1">{{ slide.title }}</h2>
                         {% if slide.description %}
                         <p class="text-light mb-0">{{ slide.description }}</p>
@@ -35,56 +37,69 @@
                 {% endfor %}
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="width: 5%;">
+            <button class="carousel-control-prev" type="button"
+                    data-bs-target="#heroCarousel" data-bs-slide="prev" style="width: 5%;">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="width: 5%;">
+            <button class="carousel-control-next" type="button"
+                    data-bs-target="#heroCarousel" data-bs-slide="next" style="width: 5%;">
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
     </div>
     {% endif %}
 
-    <div class="container-fluid py-4">
-        <div class="text-center py-4">
-            <h1 class="display-5 fw-bold mb-3">نام سایت</h1>
-            <p class="lead text-muted col-lg-8 mx-auto">
-                به وب‌سایت رسمی حفظ و نشر آثار <strong>دکتر محمد رضا کمن</strong> خوش آمدید. در این مجموعه، گنجینه‌ای از آثار متنی، صوتی و تصویری ایشان برای علاقه‌مندان گردآوری شده است.
+    <div class="container py-5">
+        <!-- معرفی سایت -->
+        <div class="text-center py-5 mb-5 bg-light rounded-4 shadow-sm">
+            <h1 class="display-5 fw-bold mb-3 text-dark">دکتر محمد رضا کمن</h1>
+            <p class="lead text-muted col-12 col-lg-8 mx-auto fs-4">
+                روانشناس بالینی • مشاور خانواده • نویسنده و پژوهشگر
+            </p>
+            <p class="col-12 col-lg-7 mx-auto text-muted">
+                مجموعه‌ای از آثار علمی، کتاب‌ها و محتوای آموزشی در حوزه روانشناسی
             </p>
         </div>
 
-        <h2 class="pb-2 border-bottom text-center mb-5"><i class="bi bi-stars me-2"></i>تازه‌ترین آثار</h2>
+        <h2 class="pb-3 border-bottom text-center mb-5 fw-bold text-primary">
+            <i class="bi bi-stars me-2"></i>تازه‌ترین آثار
+        </h2>
 
+        <!-- آخرین آثار تصویری -->
         {% if latest_videos %}
         <div class="mb-5">
             <h3 class="mb-4 text-primary"><i class="bi bi-camera-reels-fill me-2"></i>آخرین آثار تصویری</h3>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                 {% for video in latest_videos %}
                 <div class="col">
-                    <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card">
                         <video controls preload="metadata" class="card-img-top"
-                               style="max-height: 220px; object-fit: cover;">
+                               style="max-height: 240px; object-fit: cover;">
                             <source src="{{ video.video_file.url }}" type="video/mp4">
                         </video>
                         <div class="card-body">
-                            <h5 class="card-title">{{ video.title }}</h5>
+                            <h5 class="card-title fw-bold">{{ video.title }}</h5>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
+        <hr >
         {% endif %}
 
+        <!-- آخرین آثار صوتی -->
         {% if latest_audios %}
         <div class="mb-5">
             <h3 class="mb-4 text-success"><i class="bi bi-mic-fill me-2"></i>آخرین آثار صوتی</h3>
-            <div class="row row-cols-1 g-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                 {% for audio in latest_audios %}
                 <div class="col">
-                    <div class="card shadow-sm border-0 rounded-4 p-4">
-                        <h5 class="card-title"><i class="bi bi-soundwave me-2 text-muted"></i>{{ audio.title }}</h5>
-                        <audio controls class="w-100 mt-2" preload="metadata">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 hover-card d-flex flex-column">
+                        <h5 class="card-title fw-bold mb-3">
+                            <i class="bi bi-soundwave me-2 text-muted"></i>{{ audio.title }}
+                        </h5>
+                        <audio controls class="w-100 mt-auto" preload="metadata">
                             <source src="{{ audio.audio_file.url }}" type="audio/mpeg">
                         </audio>
                     </div>
@@ -92,22 +107,90 @@
                 {% endfor %}
             </div>
         </div>
+        <hr>
         {% endif %}
 
-        {% if latest_texts %}
+
+        <!-- آخرین کتاب‌ها - با افکت سه‌بعدی دقیقاً مثل صفحه کتاب‌ها -->
+        {% if latest_books %}
         <div>
-            <h3 class="mb-4 text-warning"><i class="bi bi-file-text-fill me-2"></i>آخرین آثار متنی</h3>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                {% for text in latest_texts %}
+            <h3 class="mb-4 text-info"><i class="bi bi-book-fill me-2"></i> کتاب‌ها</h3>
+
+            <style>
+            .book-wrapper {
+                aspect-ratio: 2 / 3;
+                perspective: 1500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 0;
+            }
+            .book-3d {
+                width: 85%;
+                height: 85%;
+                position: relative;
+                transform-style: preserve-3d;
+                transform: rotateY(-30deg);
+                transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                cursor: pointer;
+            }
+            .book-wrapper:hover .book-3d {
+                transform: rotateY(-5deg) scale(1.05);
+            }
+            .book-cover-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                transform: translateZ(12px);
+                box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.25);
+                border-radius: 2px 4px 4px 2px;
+            }
+            .book-3d::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #f0f0f0;
+                transform: translateZ(-12px);
+                border-radius: 2px 4px 4px 2px;
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            }
+            .book-3d::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 0;
+                width: 24px;
+                height: calc(100% - 4px);
+                background: linear-gradient(to right, #e0e0e0, #ffffff, #e0e0e0);
+                transform-origin: left;
+                transform: rotateY(90deg) translateZ(-12px);
+            }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                {% for book in latest_books %}
                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm p-4 rounded-4 d-flex flex-column">
-                        <div class="flex-grow-1">
-                            <h5 class="card-title">{{ text.title }}</h5>
-                            <p class="card-text text-muted small">{{ text.description|truncatewords:25 }}</p>
+                    <div class="card h-100 shadow-sm overflow-hidden">
+                        <div class="book-wrapper">
+                            <div class="book-3d">
+                                <img src="{{ book.cover_image.url }}" class="book-cover-img" alt="{{ book.title }}">
+                            </div>
                         </div>
-                        <a href="{{ text.file.url }}" class="btn btn-outline-primary mt-auto rounded-pill" download>
-                            <i class="bi bi-download me-2"></i>دانلود فایل
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold mb-2">{{ book.title }}</h5>
+                            <p class="card-text text-muted flex-grow-1 small">
+                                {{ book.description|truncatewords:22|default:"یکی از آثار ارزشمند دکتر محمد رضا کمن" }}
+                            </p>
+                             <a href="{{ book.book_file.url }}" class="btn btn-primary btn-lg text-nowrap" download>
+                            <i class="bi bi-download me-2"></i> دانلود قسمتی از کتاب
                         </a>
+                            <hr/>
+                        <a href="https://book.mehrestan.ir/product/%D8%AE%D8%A7%D9%86%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D8%AE%D8%B4%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D9%84%DB%8C/" class="btn btn-success btn-lg text-nowrap">
+                            <i class="bi bi-cart-fill me-2"></i> خرید نسخه فیزیکی
+                        </a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -115,6 +198,5 @@
         </div>
         {% endif %}
     </div>
-
 
 {% endblock %}

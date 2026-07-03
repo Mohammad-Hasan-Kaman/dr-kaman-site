@@ -1,0 +1,18 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#2c3e50"/>
+  <rect x="50" y="50" width="700" height="350" rx="10" fill="#34495e" stroke="#7f8c8d" stroke-width="2"/>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">Content Gallery</text>
+  <rect x="100" y="120" width="200" height="250" rx="5" fill="#ecf0f1"/>
+  <rect x="350" y="120" width="200" height="250" rx="5" fill="#ecf0f1"/>
+  <rect x="600" y="120" width="150" height="250" rx="5" fill="#ecf0f1"/>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle" font-weight="bold">Audio Works</text>
+  <text x="450" y="150" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle" font-weight="bold">Video Works</text>
+  <text x="675" y="150" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50" text-anchor="middle" font-weight="bold">Books</text>
+  <circle cx="200" cy="220" r="40" fill="#3498db"/>
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="30" fill="#fff" text-anchor="middle">▶</text>
+  <circle cx="450" cy="220" r="40" fill="#9b59b6"/>
+  <text x="450" y="230" font-family="Arial, sans-serif" font-size="30" fill="#fff" text-anchor="middle">▶</text>
+  <circle cx="675" cy="220" r="40" fill="#f39c12"/>
+  <text x="675" y="230" font-family="Arial, sans-serif" font-size="30" fill="#fff" text-anchor="middle">📚</text>
+  <text x="400" y="390" font-family="Arial, sans-serif" font-size="12" fill="#bdc3c7" text-anchor="middle">Organized by Category & Date</text>
+</svg>

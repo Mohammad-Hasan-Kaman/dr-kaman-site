@@ -9,6 +9,8 @@ urlpatterns = [
     path('audios/', include('audios.urls')),
     path('videos/', include('videos.urls')),
     path('search/', include('search.urls')),
+    path('books/', include('books.urls')),  # <-- این خط را اضافه کنید
+
     path('', include('core.urls')),
 ]
 

@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% block title %}آثار متنی - وب‌سایت دکتر محمد رضا کمن{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+    <div class="mb-5">
+        <i class="bi bi-clock-history display-1 text-muted mb-4"></i>
+        <h2 class="display-5 fw-bold text-dark">آثار متنی</h2>
+        <p class="lead text-muted mt-3">{{ message }}</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 rounded-4 p-5 bg-light">
+                <div class="text-center">
+                    <h4 class="text-primary mb-3">به زودی...</h4>
+                    <p class="mb-4">در این بخش، مجموعه‌ای از مقالات، یادداشت‌ها و آثار متنی دکتر محمد رضا کمن برای مطالعه و دانلود قرار خواهد گرفت.</p>
+                    <a href="{% url 'core:home' %}" class="btn btn-primary btn-lg rounded-pill px-5">
+                        <i class="bi bi-house-door me-2"></i>بازگشت به خانه
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

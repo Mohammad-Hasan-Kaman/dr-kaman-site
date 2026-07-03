@@ -1,0 +1,15 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#2c3e50"/>
+  <rect x="50" y="50" width="700" height="350" rx="10" fill="#34495e" stroke="#7f8c8d" stroke-width="2"/>
+  <path d="M50,50 L750,50 L750,150 L50,150 Z" fill="#e74c3c"/>
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" font-weight="bold">Dr. Kaman Psychology Portal</text>
+  <text x="400" y="130" font-family="Arial, sans-serif" font-size="14" fill="#ecf0f1" text-anchor="middle">Multimedia Archive: Audio, Video, Books & Articles</text>
+  <rect x="100" y="200" width="600" height="180" rx="5" fill="#ecf0f1"/>
+  <text x="400" y="250" font-family="Arial, sans-serif" font-size="20" fill="#2c3e50" text-anchor="middle" font-weight="bold">Latest Lectures & Books</text>
+  <rect x="150" y="270" width="100" height="80" rx="3" fill="#3498db"/>
+  <rect x="400" y="270" width="100" height="80" rx="3" fill="#9b59b6"/>
+  <rect x="650" y="270" width="100" height="80" rx="3" fill="#f39c12"/>
+  <text x="200" y="320" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50" text-anchor="middle">Audio</text>
+  <text x="450" y="320" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50" text-anchor="middle">Video</text>
+  <text x="700" y="320" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50" text-anchor="middle">Books</text>
+</svg>

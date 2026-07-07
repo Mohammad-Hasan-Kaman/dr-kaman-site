@@ -142,7 +142,7 @@ Developers are welcome to contribute! Please follow the guidelines in [CONTRIBUT
 If you find this project useful, please give it a **⭐ star**!
 Thank you for your support.
 
-[![Star History](https://api.star-history.com/svg?repos=Mohammad-Hasan-Kaman/dr-kaman-site&type=Date)](https://star-history.com/#Mohammad-Hasan-Kaman/dr-kaman-site&Date)
+[![Star History](https://api.star-history.com/svg?repos=dr-kaman-site&type=Date)](https://star-history.com/#dr-kaman-site&Date)
 
 ---
 *Maintained by Mohammad Hasan Kaman | Last updated: July 2026*

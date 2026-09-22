@@ -13,7 +13,7 @@ class AudioWork(models.Model):
     audio_file = models.FileField(
         upload_to='audios/',
         verbose_name="فایل صوتی",
-        validators=[FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg', 'm4a'])]
+        validators=[FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg', 'm4a', 'mp4'])]
     )
 
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="دسته‌بندی")
@@ -21,3 +21,7 @@ class AudioWork(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('audios:audio_list') + f'?id={self.id}'

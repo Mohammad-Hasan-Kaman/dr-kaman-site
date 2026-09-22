@@ -54,6 +54,45 @@
     transform-origin: left;
     transform: rotateY(90deg) translateZ(-12px);
 }
+@media (max-width: 768px) {
+    .book-3d { transform: rotateY(-15deg) !important; }
+    .book-wrapper { perspective: 800px; }
+    .card-body .btn { font-size: 0.9rem; padding: 0.5rem; white-space: normal; }
+}
+
+/* ریسپانسیو: جلد کتاب در نمایشگرهای کوچک حذف نشه */
+@media (max-width: 991.98px) {
+    .book-wrapper {
+        max-height: none !important;
+        aspect-ratio: auto !important;
+        min-height: 220px;
+        padding: 20px 10px !important;
+    }
+    .book-3d {
+        position: relative !important;
+        width: 60% !important;
+        height: auto !important;
+        aspect-ratio: 2 / 3;
+        transform: rotateY(-12deg) !important;
+    }
+    .book-cover-img {
+        position: relative !important;
+        transform: translateZ(0);
+        border-radius: 2px 8px 8px 2px;
+    }
+}
+
+/* در موبایل خیلی کوچک: نمایش عادی جلد بدون افکت سه‌بعدی */
+@media (max-width: 575.98px) {
+    .book-3d {
+        transform: none !important;
+        width: 55% !important;
+    }
+    .book-3d::before,
+    .book-3d::after {
+        display: none;
+    }
+}
 </style>
 
 <div class="container py-5">
@@ -101,10 +140,11 @@
                     </small>
 
                     <div class="mt-auto d-grid gap-2">
+                        {% if book.book_file %}
                         <a href="{{ book.book_file.url }}" class="btn btn-primary btn-lg text-nowrap" download>
                             <i class="bi bi-download me-2"></i> دانلود قسمتی از کتاب
                         </a>
-                        <hr/>
+                        {% endif %}
                         <a href="https://book.mehrestan.ir/product/%D8%AE%D8%A7%D9%86%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D8%AE%D8%B4%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D9%84%DB%8C/"
                            class="btn btn-success btn-lg text-nowrap">
                             <i class="bi bi-cart-fill me-2"></i> خرید نسخه فیزیکی

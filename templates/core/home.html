@@ -23,7 +23,7 @@
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <img src="{{ slide.image.url }}"
                          class="d-block w-100"
-                         style="height: 60vh; object-fit: cover;"
+                         style="height: 60vh; object-fit: contain; background: #0a2e14;"
                          alt="{{ slide.title }}">
 
                     <div class="carousel-caption bg-dark bg-opacity-50 rounded-3 p-3 d-none d-md-block"
@@ -36,6 +36,15 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <style>
+            @media (max-width: 768px) {
+                #heroCarousel { max-height: 300px !important; }
+                #heroCarousel img { height: 40vh !important; }
+                .book-3d { transform: rotateY(-15deg) !important; }
+                .book-wrapper { perspective: 800px; }
+            }
+            </style>
 
             <button class="carousel-control-prev" type="button"
                     data-bs-target="#heroCarousel" data-bs-slide="prev" style="width: 5%;">
@@ -68,40 +77,27 @@
         <!-- آخرین آثار تصویری -->
         {% if latest_videos %}
         <div class="mb-5">
-            <h3 class="mb-4 text-primary"><i class="bi bi-camera-reels-fill me-2"></i>آخرین آثار تصویری</h3>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0 text-primary"><i class="bi bi-camera-reels-fill me-2"></i>آخرین آثار تصویری</h3>
+                <a href="{% url 'videos:video_list' %}" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i> مشاهده همه
+                </a>
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                 {% for video in latest_videos %}
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card">
                         <video controls preload="metadata" class="card-img-top"
-                               style="max-height: 240px; object-fit: cover;">
+                               style="max-height: 240px; object-fit: contain; background: #000; width: 100%;"
+                               muted playsinline>
                             <source src="{{ video.video_file.url }}" type="video/mp4">
                         </video>
                         <div class="card-body">
                             <h5 class="card-title fw-bold">{{ video.title }}</h5>
+                            <a href="{{ video.get_absolute_url }}" class="btn btn-outline-primary btn-sm mt-2">
+                                <i class="bi bi-play-circle me-1"></i> مشاهده کامل
+                            </a>
                         </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        <hr >
-        {% endif %}
-
-        <!-- آخرین آثار صوتی -->
-        {% if latest_audios %}
-        <div class="mb-5">
-            <h3 class="mb-4 text-success"><i class="bi bi-mic-fill me-2"></i>آخرین آثار صوتی</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-                {% for audio in latest_audios %}
-                <div class="col">
-                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 hover-card d-flex flex-column">
-                        <h5 class="card-title fw-bold mb-3">
-                            <i class="bi bi-soundwave me-2 text-muted"></i>{{ audio.title }}
-                        </h5>
-                        <audio controls class="w-100 mt-auto" preload="metadata">
-                            <source src="{{ audio.audio_file.url }}" type="audio/mpeg">
-                        </audio>
                     </div>
                 </div>
                 {% endfor %}
@@ -110,11 +106,46 @@
         <hr>
         {% endif %}
 
+        <!-- آخرین آثار صوتی -->
+        {% if latest_audios %}
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0 text-success"><i class="bi bi-mic-fill me-2"></i>آخرین آثار صوتی</h3>
+                <a href="{% url 'audios:audio_list' %}" class="btn btn-outline-success btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i> مشاهده همه
+                </a>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                {% for audio in latest_audios %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 hover-card d-flex flex-column">
+                        <h5 class="card-title fw-bold mb-3">
+                            <i class="bi bi-soundwave me-2 text-muted"></i>{{ audio.title }}
+                        </h5>
+                        <audio controls class="w-100 mt-auto" preload="metadata"
+                               onclick="event.stopPropagation()">
+                            <source src="{{ audio.audio_file.url }}" type="audio/mpeg">
+                        </audio>
+                        <a href="{{ audio.get_absolute_url }}" class="btn btn-outline-success btn-sm mt-3">
+                            <i class="bi bi-music-note-beamed me-1"></i> مشاهده در صفحه کامل
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr>
+        {% endif %}
 
-        <!-- آخرین کتاب‌ها - با افکت سه‌بعدی دقیقاً مثل صفحه کتاب‌ها -->
+        <!-- آخرین کتاب‌ها -->
         {% if latest_books %}
         <div>
-            <h3 class="mb-4 text-info"><i class="bi bi-book-fill me-2"></i> کتاب‌ها</h3>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0 text-info"><i class="bi bi-book-fill me-2"></i> کتاب‌ها</h3>
+                <a href="/books/" class="btn btn-outline-info btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i> مشاهده همه
+                </a>
+            </div>
 
             <style>
             .book-wrapper {
@@ -167,6 +198,40 @@
                 transform-origin: left;
                 transform: rotateY(90deg) translateZ(-12px);
             }
+            @media (max-width: 768px) {
+                .book-3d { transform: rotateY(-15deg) !important; }
+                .book-wrapper { perspective: 800px; }
+            }
+            /* ریسپانسیو: جلد کتاب در نمایشگرهای کوچک حذف نشه */
+            @media (max-width: 991.98px) {
+                .book-wrapper {
+                    aspect-ratio: auto !important;
+                    min-height: 220px;
+                    padding: 20px 10px !important;
+                }
+                .book-3d {
+                    position: relative !important;
+                    width: 60% !important;
+                    height: auto !important;
+                    aspect-ratio: 2 / 3;
+                    transform: rotateY(-12deg) !important;
+                }
+                .book-cover-img {
+                    position: relative !important;
+                    transform: translateZ(0);
+                    border-radius: 2px 8px 8px 2px;
+                }
+            }
+            @media (max-width: 575.98px) {
+                .book-3d {
+                    transform: none !important;
+                    width: 55% !important;
+                }
+                .book-3d::before,
+                .book-3d::after {
+                    display: none;
+                }
+            }
             </style>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
@@ -183,13 +248,14 @@
                             <p class="card-text text-muted flex-grow-1 small">
                                 {{ book.description|truncatewords:22|default:"یکی از آثار ارزشمند دکتر محمد رضا کمن" }}
                             </p>
-                             <a href="{{ book.book_file.url }}" class="btn btn-primary btn-lg text-nowrap" download>
-                            <i class="bi bi-download me-2"></i> دانلود قسمتی از کتاب
-                        </a>
-                            <hr/>
-                        <a href="https://book.mehrestan.ir/product/%D8%AE%D8%A7%D9%86%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D8%AE%D8%B4%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D9%84%DB%8C/" class="btn btn-success btn-lg text-nowrap">
-                            <i class="bi bi-cart-fill me-2"></i> خرید نسخه فیزیکی
-                        </a>
+                            {% if book.book_file %}
+                            <a href="{{ book.book_file.url }}" class="btn btn-primary btn-lg text-nowrap" download>
+                                <i class="bi bi-download me-2"></i> دانلود قسمتی از کتاب
+                            </a>
+                            {% endif %}
+                            <a href="https://book.mehrestan.ir/product/%D8%AE%D8%A7%D9%86%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D8%AE%D8%B4%D8%AA%D9%87%D8%A7%DB%8C-%D8%AF%D9%84%DB%8C/" class="btn btn-success btn-lg text-nowrap">
+                                <i class="bi bi-cart-fill me-2"></i> خرید نسخه فیزیکی
+                            </a>
                         </div>
                     </div>
                 </div>

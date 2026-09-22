@@ -1,0 +1,117 @@
+/* ============================================
+   DR_KAMAN_SITE — Responsive overrides
+   فایل اضافی برای نمایش صحیح در صفحه‌نمایش‌های کوچک
+   ============================================ */
+
+/* --- Mobile first reset --- */
+@media (max-width: 767.98px) {
+    .page-main-content {
+        width: 100% !important;
+        margin: 10px auto !important;
+        padding: 1rem !important;
+        border-radius: 10px;
+    }
+
+    .display-5,
+    .display-4 {
+        font-size: 1.45rem !important;
+    }
+
+    .lead {
+        font-size: 0.95rem !important;
+    }
+
+    /* navbar links stack properly */
+    .navbar-nav {
+        text-align: right;
+        padding: 0.5rem 0;
+    }
+
+    .nav-link {
+        padding: 0.6rem 0.8rem !important;
+    }
+
+    /* search form goes full width under navbar */
+    .navbar .d-flex {
+        width: 100% !important;
+        margin-top: 0.5rem;
+        padding: 0 0.5rem;
+    }
+    .navbar .d-flex .form-control {
+        flex: 1 1 auto !important;
+    }
+
+    /* carousel height on mobile */
+    #heroCarousel .carousel-item img {
+        height: 40vh !important;
+    }
+
+    /* book cards: hide 3D effect on mobile (it overflows) */
+    .book-wrapper {
+        aspect-ratio: auto !important;
+        max-height: 280px !important;
+        padding: 10px !important;
+    }
+    .book-3d {
+        transform: none !important;
+        width: 70% !important;
+        height: auto !important;
+        position: relative !important;
+    }
+    .book-wrapper:hover .book-3d {
+        transform: none !important;
+    }
+
+    /* download/buy buttons */
+    .btn-lg {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.8rem !important;
+    }
+
+    /* filter/search cards on list pages */
+    .card.form-card,
+    .card.p-4 {
+        padding: 1rem !important;
+    }
+
+    /* about / contact page cards */
+    .card.p-5 {
+        padding: 1.5rem !important;
+    }
+}
+
+/* --- Tablet adjustments (768px–991px) --- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .page-main-content {
+        width: 92% !important;
+        padding: 1.5rem !important;
+    }
+}
+
+/* --- Large screens: keep original wide layout --- */
+@media (min-width: 1200px) {
+    .page-main-content {
+        max-width: 1400px;
+    }
+}
+
+/* --- Video and audio players: prevent overflow --- */
+video,
+audio {
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 44px !important;
+}
+
+/* Fix for flex containers - audio controls need min-height */
+@media (min-width: 768px) {
+    .card-body audio.controls {
+        min-height: 44px;
+        display: block;
+    }
+}
+
+/* --- General card grid safety --- */
+.row-cols-1 > .col {
+    min-width: 0;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- صفحات اصلی -->
+    <url><loc>https://drkaman.ir/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+    <url><loc>https://drkaman.ir/about/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://drkaman.ir/contact/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://drkaman.ir/videos/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+    <url><loc>https://drkaman.ir/audios/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+    <url><loc>https://drkaman.ir/books/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://drkaman.ir/texts/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+    <!-- ویدیوها -->
+    {% for v in videos %}
+    <url><loc>https://drkaman.ir/videos/?id={{ v.id }}</loc><lastmod>{{ v.created_at|date:"Y-m-d" }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    {% endfor %}
+
+    <!-- صداها -->
+    {% for a in audios %}
+    <url><loc>https://drkaman.ir/audios/?id={{ a.id }}</loc><lastmod>{{ a.created_at|date:"Y-m-d" }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    {% endfor %}
+
+    <!-- کتاب‌ها -->
+    {% for b in books %}
+    <url><loc>https://drkaman.ir/books/</loc><lastmod>{{ b.created_at|date:"Y-m-d" }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    {% endfor %}
+
+    <!-- متون -->
+    {% for t in texts %}
+    <url><loc>https://drkaman.ir/texts/</loc><lastmod>{{ t.created_at|date:"Y-m-d" }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    {% endfor %}
+</urlset>

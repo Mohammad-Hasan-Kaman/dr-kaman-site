@@ -29,3 +29,7 @@ class VideoWork(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('videos:video_list') + f'?id={self.id}'

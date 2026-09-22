@@ -14,7 +14,9 @@ class Book(models.Model):
 
     book_file = models.FileField(
         upload_to='books/',
-        verbose_name="فایل کتاب (PDF)",
+        verbose_name="فایل کتاب (PDF) - اختیاری",
+        blank=True,
+        null=True,
         validators=[FileExtensionValidator(allowed_extensions=['pdf', 'epub'])]
     )
 

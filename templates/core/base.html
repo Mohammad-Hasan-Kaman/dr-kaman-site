@@ -6,10 +6,26 @@
     <title>{% block title %}خانه-وب‌سایت دکتر محمد رضا کمن{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Google Search Console verification -->
+    <meta name="google-site-verification" content="-0ub8K6VN1dlxKaqdcMJMq4RFbNUMB2caH0hosbvkwA">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFLRS8R9H3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SFLRS8R9H3');
+    </script>
+
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="icon" href="{% static 'images/favicon_kaman.ico' %}" type="image/x-icon">
+
+    <!-- استایل واکنش‌گرا برای موبایل و تبلت -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
     <!-- فونت B Mitra -->
     <style>
@@ -51,6 +67,33 @@
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ریسپانسیو: کاهش فاصله در موبایل */
+        @media (max-width: 768px) {
+            .page-main-content {
+                width: 100%;
+                padding: 1rem;
+                margin: 15px auto;
+                border-radius: 10px;
+            }
+            .navbar-brand { font-size: 1rem; }
+            .display-4, .display-5 { font-size: 1.75rem; }
+            .lead { font-size: 1rem !important; }
+            body { background: linear-gradient(0deg, rgba(223, 237, 232, 1) 27%, rgba(87, 199, 133, 1) 84%, rgba(87, 199, 133, 1) 100%); }
+        }
+
+        /* منوی موبایل */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background-color: #075718;
+                padding: 1rem;
+                border-radius: 10px;
+                margin-top: 0.5rem;
+            }
+            .navbar-nav { gap: 0.25rem; }
+            .nav-link { padding: 0.5rem 0.75rem; }
+            .d-flex.ms-auto { margin-top: 0.75rem; width: 100%; }
         }
 
         .navbar {

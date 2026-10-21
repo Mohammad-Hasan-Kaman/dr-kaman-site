@@ -188,6 +188,6 @@ Thank you for your support.
 
 ---
 
-*Maintained by Mohammad Hasan Kaman | Last updated: September 2026*
+*Maintained by Mohammad Hasan Kaman | Last updated: October 2026*
 
 > **Disclaimer:** This project is designed for educational and archival purposes only. All content belongs to Dr. Mohammad Reza Kaman.

@@ -1,3 +1,9 @@
+### 🌐 Telegram: [@mohaka_programmer](https://t.me/mohaka_programmer)
+
+[![Telegram](https://img.shields.io/badge/Telegram-%40mohaka__programmer-2CA5E0?logo=telegram&logoColor=white)](https://t.me/mohaka_programmer)
+
+---
+
 # 🧠 Dr. Kaman Psychology Portal
 
 > A professional multi-media archive for Dr. Mohammad Reza Kaman, featuring podcasts, videos, books, and articles with advanced search capabilities.
